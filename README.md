@@ -1,5 +1,3 @@
----
-
 # ComfyUI Docker Stack
 
 This repository contains a ready-to-use [ComfyUI](https://github.com/comfyanonymous/ComfyUI) Docker Compose stack, preconfigured for persistent storage and easy extension with popular custom nodes.
@@ -25,6 +23,7 @@ It also makes it easy to update without worrying about potential conflicts. On c
   - On Windows: Enable WSL2 and GPU support if you want to use your NVIDIA GPU.
   - It also works through [Portainer-CE](https://hub.docker.com/r/portainer/portainer-ce), which is the way I use this setup.
 - [Git](https://git-scm.com/) (to clone this repo)
+- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for NVIDIA GPU Passthrough in your Docker containers
 
 ### **2. Clone this repository**
 
