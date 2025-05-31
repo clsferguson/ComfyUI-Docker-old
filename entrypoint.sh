@@ -7,6 +7,8 @@
 set -e
 
 CN_DIR=/app/ComfyUI/custom_nodes
+INIT_MARKER="$CN_DIR/.custom_nodes_initialized"
+
 declare -A REPOS=(
   ["ComfyUI-Manager"]="https://github.com/ltdrdata/ComfyUI-Manager.git"
   ["ComfyUI_essentials"]="https://github.com/cubiq/ComfyUI_essentials.git"
@@ -16,28 +18,34 @@ declare -A REPOS=(
   ["ComfyUI_UltimateSDUpscale"]="https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git"
 )
 
-echo "↳ Syncing custom_nodes…"
-mkdir -p "$CN_DIR"
-for name in "${!REPOS[@]}"; do
-  url="${REPOS[$name]}"
-  target="$CN_DIR/$name"
+if [ ! -f "$INIT_MARKER" ]; then
+  echo "↳ First run: initializing custom_nodes…"
+  mkdir -p "$CN_DIR"
+  for name in "${!REPOS[@]}"; do
+    url="${REPOS[$name]}"
+    target="$CN_DIR/$name"
+    if [ -d "$target" ]; then
+      echo "  ↳ $name already exists, skipping clone"
+    else
+      echo "  ↳ Cloning $name"
+      git clone --depth 1 "$url" "$target"
+    fi
+  done
 
-  if [ -d "$target" ]; then
-    echo "  ↳ $name already exists, skipping clone"
-  else
-    echo "  ↳ Cloning $name"
-    git clone --depth 1 "$url" "$target"
-  fi
-done
+  echo "↳ Installing/upgrading dependencies…"
+  for dir in "$CN_DIR"/*/; do
+    req="$dir/requirements.txt"
+    if [ -f "$req" ]; then
+      echo "  ↳ pip install --upgrade -r $req"
+      pip install --no-cache-dir --upgrade -r "$req"
+    fi
+  done
 
-echo "↳ Installing/upgrading dependencies…"
-for dir in "$CN_DIR"/*/; do
-  req="$dir/requirements.txt"
-  if [ -f "$req" ]; then
-    echo "  ↳ pip install --upgrade -r $req"
-    pip install --no-cache-dir --upgrade -r "$req"
-  fi
-done
+  # Create marker file
+  touch "$INIT_MARKER"
+else
+  echo "↳ Custom nodes already initialized, skipping clone and dependency installation."
+fi
 
 echo "↳ Launching ComfyUI"
 exec "$@"
