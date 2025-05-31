@@ -1,5 +1,7 @@
 # ComfyUI Docker Stack
 
+[![ComfyUI Docker](https://www.johnaldred.com/wp-content/uploads/2025/05/comfyui-docker.jpg)](https://www.johnaldred.com/running-comfyui-in-docker-on-windows-or-linux/)
+
 This repository contains a ready-to-use [ComfyUI](https://github.com/comfyanonymous/ComfyUI) Docker Compose stack, preconfigured for persistent storage and easy extension with popular custom nodes.
 
 This is a somewhat cleaned up version of the setup I use that works for me. I've tried to make it as easy as possible. You can install custom nodes and do updates through ComfyUI-Manager, but they will be reset once you recreate the package. This works well for me because it lets me try out custom nodes without worry of screwing up my ComfyUI setup. If it doesn't work, I can just recreate the container and reset any time I like. If I want to keep those custom nodes permanently, I just add them to entrypoint.sh so they're automatically downloaded when the container is recreated and run for the first time - the first run will take a few minutes.
