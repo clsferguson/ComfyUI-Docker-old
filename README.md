@@ -17,6 +17,8 @@ It also makes it easy to update without worrying about potential conflicts. On c
 
 ## Quick Start
 
+You can find more [complete setup instructions on my website](https://www.johnaldred.com/running-comfyui-in-docker-on-windows-or-linux/).
+
 ### **1. Prerequisites**
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) for Windows or regular [Docker](https://docs.docker.com/desktop/setup/install/linux/) for Linux.
