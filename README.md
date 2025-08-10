@@ -10,16 +10,22 @@ It also makes it easy to update without worrying about potential conflicts. On c
 
 ## Features
 
-- **Runs ComfyUI in Docker** with GPU (NVIDIA) support.
+- **Runs ComfyUI in Docker** with GPU (NVIDIA) support - For AMD, see below.
 - **Persistent storage** for models, outputs, settings, and flows.
 - **Automatic custom node installation** (see `entrypoint.sh`).
 - **Simple to install and update.**
 
 ---
 
+### AMD Support
+
+This release is for NVIDIA GPUs. I do not have any AMD GPUs here to test with, so if you're an AMD user, check out [Colbix's AMD fork](https://github.com/Colbix/ComfyUI-Docker/tree/amd-branch).
+
+---
+
 ## Quick Start
 
-You can find more [complete setup instructions on my website](https://www.johnaldred.com/running-comfyui-in-docker-on-windows-or-linux/).
+You can find [more complete setup instructions on my website](https://www.johnaldred.com/running-comfyui-in-docker-on-windows-or-linux/).
 
 ### **1. Prerequisites**
 
