@@ -2,7 +2,8 @@
 
 [![ComfyUI Docker](https://www.johnaldred.com/wp-content/uploads/2025/05/comfyui-docker.jpg)](https://www.johnaldred.com/running-comfyui-in-docker-on-windows-or-linux/)
 
-This repository contains a ready-to-use [ComfyUI](https://github.com/comfyanonymous/ComfyUI) Docker Compose stack, preconfigured for persistent storage and easy extension with popular custom nodes.
+
+Run [ComfyUI](https://github.com/comfyanonymous/ComfyUI) in Docker with Docker Compose — simple setup with persistent storage, NVIDIA GPU support, and custom node management.
 
 This is a somewhat cleaned up version of the setup I use that works for me. I've tried to make it as easy as possible. You can install custom nodes and do updates through ComfyUI-Manager, but they will be reset once you recreate the package. This works well for me because it lets me try out custom nodes without worry of screwing up my ComfyUI setup. If it doesn't work, I can just recreate the container and reset any time I like. If I want to keep those custom nodes permanently, I just add them to entrypoint.sh so they're automatically downloaded when the container is recreated and run for the first time - the first run will take a few minutes.
 
@@ -127,6 +128,8 @@ declare -A REPOS=(
 
 See [ComfyUI’s license](https://github.com/comfyanonymous/ComfyUI/blob/master/LICENSE) for upstream project licensing.
 This repository is provided as-is for self-hosting ComfyUI in Docker.
+
+Please note: I’m sharing this setup as-is, primarily for my own use. I do not plan to maintain prebuilt images at this time. While I appreciate interest and suggestions, I won’t be merging pull requests for automated builds or similar changes.
 
 ---
 
